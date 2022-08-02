@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="text-center"> Hello Templates </h1>
+
+  {% for i in stocks %}
+    <p>{{i.symbol}} => {{i.rs_21}}, {{i.rs_55}}</p>
+    <a href="{% url 'delivery_list' i.symbol %}">Delivery</a>
+  {% endfor %}
+
+{% endblock %}

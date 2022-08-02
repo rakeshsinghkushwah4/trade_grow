@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h6> Update RS data </h6>
+    <a id="update_rs" href="{% url 'update_rs' %}">Update Rs</a>
+
+    <h6> Update Delivery Data </h6>
+    <form action="{% url 'delivery_update' %}" method="post">
+      {% csrf_token %} 
+      <input type="date" name="delivery_date" />
+      <input type="submit" value="Update Data"/>      
+    </form>
+
+    <h6> Delete Delivery Data for Specific date </h6>
+    <form action="{% url 'delivery_delete' %}" method="post">
+        {% csrf_token %} 
+        <input type="date" name="delivery_date" />
+        <input type="submit" value="Update Data"/>      
+      </form>
+</div>
+
+<!-- <script>
+    $( document ).ready(function() {
+        $("#update_rs").click(function(){
+            confirm("You want to update RS");    
+        });
+    });
+</script> -->
+{% endblock %}
