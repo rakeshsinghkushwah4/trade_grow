@@ -80,3 +80,7 @@ def DeliveryDelete(request):
 def ChartData(request, symbol, interval = "1d", interval_range = "1y"):
   data = get_history_data("{i}.NS".format(i = symbol), interval, interval_range)
   return JsonResponse(data)
+
+
+
+  # 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
