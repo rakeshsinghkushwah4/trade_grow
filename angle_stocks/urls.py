@@ -5,6 +5,7 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('rs/', views.RS, name="update_rs"),
     path('delivery/', views.DeliveryData, name="delivery_update"),
+    path('chart-data/<str:symbol>/<str:interval>/<str:interval_range>', views.ChartData, name="chart_data"),
     path('delivery-delete/', views.DeliveryDelete, name="delivery_delete"),
     # path('stocks/', views.Home ),
     # path('data/<int:token>/', views.GetStockData, name='stock_data'),

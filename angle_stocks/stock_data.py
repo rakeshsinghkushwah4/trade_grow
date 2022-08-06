@@ -4,7 +4,8 @@ import requests
 import pdb
 
 
-
+# interval=1wk
+# range=1y
 # https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI?region=US&lang=en-US&includePrePost=false&interval=1h&useYfid=true&range=1mo&corsDomain=finance.yahoo.com&.tsrc=finance
 # data['chart']['result'][0]['indicators']['quote'][0]['open]
 
@@ -21,7 +22,7 @@ def get_history_data(symbol, interval, stock_range):
   low = price_data['low']
   close = price_data['close']
   high = price_data['high']
-  return { "open": price_open, "low": low, "close": close, "high": high, "volume": volume }
+  return { "open": price_open, "low": low, "close": close, "high": high, "volume": volume, "timestamp": timestamp }
     
 
     

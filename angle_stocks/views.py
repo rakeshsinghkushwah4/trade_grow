@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from angle_stocks.models import Stock, Delivery
 import requests
 import pdb
@@ -75,3 +75,8 @@ def DeliveryDelete(request):
   date = request.POST['delivery_date']
   Delivery.objects.filter(delivery_date=date).delete()
   return redirect('update_data')
+
+
+def ChartData(request, symbol, interval = "1d", interval_range = "1y"):
+  data = get_history_data("{i}.NS".format(i = symbol), interval, interval_range)
+  return JsonResponse(data)

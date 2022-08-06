@@ -1,11 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+<div class="container-fluid">
   <h1 class="text-center"> Hello Templates </h1>
-
-  {% for i in stocks %}
-    <p>{{i.symbol}} => {{i.rs_21}}, {{i.rs_55}}</p>
-    <a href="{% url 'delivery_list' i.symbol %}">Delivery</a>
-  {% endfor %}
-
+  <div class="row">
+    <div class="col-lg-2 scroll">
+      {% for i in stocks %}
+        <p class="show_chart" data-symbol="{{i.symbol}}" data-url="{%url 'chart_data' i.symbol '1d' '1y' %}">{{i.symbol}} => {{i.rs_21}}, {{i.rs_55}}</p>
+        <a href="{% url 'delivery_list' i.symbol %}">Delivery</a>
+      {% endfor %}
+    </div>
+    <div class="col-lg-10 card">
+      <p>Chart</p>
+      <div class="chart">
+        <svg id="container"></svg>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/custom_chart.js' %}"></script>
 {% endblock %}
