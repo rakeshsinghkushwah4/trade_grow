@@ -16,7 +16,7 @@ function chart(data, id){
   }
   const margin = {top: 15, right: 50, bottom: 205, left: 50},
   w = 1200 - margin.left - margin.right,
-  h = 1000 - margin.top - margin.bottom;
+  h = 900 - margin.top - margin.bottom;
 
   var svg = d3.select("#container"+id)
   .attr("width", w + margin.left + margin.right)

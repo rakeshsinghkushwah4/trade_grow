@@ -3,17 +3,28 @@
 
 {% block content %}
 <div class="container-fluid">
-  <h1 class="text-center"> Hello Templates </h1>
   <div class="row">
     <div class="col-lg-2 scroll">
       {% for i in stocks %}
-        <p class="show_chart" data-symbol="{{i.symbol}}" data-url="{%url 'chart_data' i.symbol '1d' '1y' %}">{{i.symbol}} => {{i.rs_21}}, {{i.rs_55}}</p>
+        <p class="show_chart" data-symbol="{{i.symbol}}">{{i.symbol}} => {{i.rs_21}}, {{i.rs_55}}</p>
         <a href="{% url 'delivery_list' i.symbol %}">Delivery</a>
       {% endfor %}
     </div>
     <div class="col-lg-10 card">
-      <p>Chart</p>
-      <div class="chart">
+      <div class="d-flex flex-row-reverse" style="z-index: 999;">
+        <div class="p-2 chart_interval" data-interval="1mo">1mo</div>
+        <div class="p-2 chart_interval" data-interval="1wk">1wk</div>
+        <div class="p-2 chart_interval" data-interval="1d">1d</div>
+        <div class="p-2 chart_interval" data-interval="1h">1h</div>
+      </div>
+
+      <div class="d-flex flex-row-reverse" style="z-index: 999;">
+        <div class="p-2 chart_range" data-range="6mo">6mo</div>
+        <div class="p-2 chart_range" data-range="1y">1y</div>
+        <div class="p-2 chart_range" data-range="2y">2y</div>
+        <div class="p-2 chart_range" data-range="5y">5y</div>
+      </div>
+      <div class="chart" style="position: fixed;">
         <svg id="container"></svg>
       </div>
     </div>
